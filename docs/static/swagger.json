@@ -1,0 +1,160 @@
+{
+  "swaggerDefinition": {
+    "info": {
+      "title": "Votre API",
+      "description": "Documentation de votre API pour le POC.",
+      "version": "1.0.0"
+    },
+    "host": "localhost:5001",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ]
+  },
+  "apis": [
+    "./routes/**/*.route.js"
+  ],
+  "swagger": "2.0",
+  "paths": {
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Récupère un utilisateur par son identifiant",
+        "description": "Permet de rechercher un utilisateur spécifique en utilisant son ID.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "L'identifiant unique de l'utilisateur."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Un utilisateur trouvé.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "L'utilisateur n'a pas été trouvé."
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Récupère la liste de tous les utilisateurs",
+        "description": "Permet de récupérer une liste complète des utilisateurs enregistrés.",
+        "responses": {
+          "200": {
+            "description": "Une liste d'utilisateurs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Récupère la liste de tous les produits",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "Accès public, mais l'authentification est requise pour la démonstration.",
+        "responses": {
+          "200": {
+            "description": "Une liste de produits."
+          },
+          "401": {
+            "description": "Authentification requise."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Crée un nouveau produit",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "Crée un produit avec les données fournies.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Le produit a été créé avec succès."
+          },
+          "401": {
+            "description": "Authentification requise."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}

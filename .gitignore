@@ -1,5 +1,7 @@
 # Node modules
 back/node_modules/
+demo/node_modules/
+node_modules/
 
 # Logs
 *.log

@@ -1,0 +1,30 @@
+graph LR
+
+classDef GET fill:#4caf50,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef POST fill:#2196f3,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef PUT fill:#ff9800,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef DELETE fill:#f44346,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef LAYER fill:#b3e5fc,stroke:#333,stroke-width:1px,color:#333;
+
+
+subgraph Endpoints
+  GET_user_476(("GET user/"))
+end
+
+subgraph Logic
+  Middleware_logMiddleware_0[/logMiddleware/]
+  Controller_userController.getUsers_1[/userController.getUsers/]
+end
+
+subgraph Data Layer
+  database_user[/Database/]
+end
+
+  Client --> GET_user_476
+  GET_user_476 --> Middleware_logMiddleware_0
+  Middleware_logMiddleware_0 --> Controller_userController.getUsers_1
+  Controller_userController.getUsers_1 --> database_user
+
+  class GET_user_476 GET;
+  class Middleware_logMiddleware_0,Controller_userController.getUsers_1 LAYER;
+

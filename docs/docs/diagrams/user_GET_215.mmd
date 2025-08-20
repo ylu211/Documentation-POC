@@ -1,0 +1,15 @@
+graph LR
+
+classDef GET fill:#4caf50,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef POST fill:#2196f3,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef PUT fill:#ff9800,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef DELETE fill:#f44346,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef LAYER fill:#b3e5fc,stroke:#333,stroke-width:1px,color:#333;
+
+  Controller_userController.getUserById_0[/Controller: userController.getUserById/]
+  GET_user_215 --> Controller_userController.getUserById_0
+  database_user[/Database/]
+  Controller_userController.getUserById_0 --> database_user
+  class GET_user_215 GET;
+  class Controller_userController.getUserById_0 LAYER;
+

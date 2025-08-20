@@ -1,0 +1,17 @@
+graph LR
+
+classDef GET fill:#4caf50,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef POST fill:#2196f3,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef PUT fill:#ff9800,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef DELETE fill:#f44346,stroke:#333,stroke-width:1px,color:#fff,rx:10,ry:10;
+classDef LAYER fill:#b3e5fc,stroke:#333,stroke-width:1px,color:#333;
+
+  Middleware_asyncreq_0[/Middleware: async (req/]
+  POST_user_411 --> Middleware_asyncreq_0
+  Controller_res_1[/Controller: res/]
+  Middleware_asyncreq_0 --> Controller_res_1
+  database_user[/Database/]
+  Controller_res_1 --> database_user
+  class POST_user_411 POST;
+  class Middleware_asyncreq_0,Controller_res_1 LAYER;
+
