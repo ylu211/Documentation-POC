@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "node-fetch": "^3.3.2",
+    "swagger-ui-express": "^5.0.1",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.2",
+    "redis": "^4.6.7",
+    "nodemailer": "^6.9.4",
+    "axios": "^1.4.0"
+  },
+  "scripts": {
+    "sync-swagger": "node sync-swagger.js",
+    "build-docs": "npm run sync-swagger && docusaurus build",
+    "start": "node server.js",
+    "generate-diagrams": "node scripts/generateMermaid.js",
+    "generate-swagger": "node scripts/generateSwagger.js",
+    "generate-descriptions": "node scripts/generateDescriptions.js"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8"
+  }
+}

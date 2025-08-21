@@ -1,0 +1,61 @@
+{
+  "swaggerDefinition": {
+    "info": {
+      "title": "Votre API",
+      "description": "Documentation de votre API pour le POC.",
+      "version": "1.0.0"
+    },
+    "host": "localhost:5001",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ]
+  },
+  "apis": [
+    "./routes/**/*.route.js"
+  ],
+  "swagger": "2.0",
+  "paths": {
+    "/products": {
+      "get": {
+        "summary": "Get all products",
+        "responses": {
+          "200": {
+            "description": "List of products"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a product",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Product created"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}
