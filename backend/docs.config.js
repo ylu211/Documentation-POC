@@ -9,5 +9,5 @@ module.exports = {
     basePath: '/',
     schemes: ['http'],
   },
-  apis: ['./routes/**/*.route.js'], // Scanne tous les fichiers de route
+  apis: ['./routes/**/*.route.js'],
 };

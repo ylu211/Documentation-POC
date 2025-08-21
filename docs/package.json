@@ -21,8 +21,8 @@
     "clsx": "^2.0.0",
     "docusaurus-plugin-openapi-docs": "^4.5.1",
     "prism-react-renderer": "^2.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "redocusaurus": "^2.5.0",
     "swagger-ui-react": "^5.27.1"
   },

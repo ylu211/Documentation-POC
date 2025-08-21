@@ -1,38 +1,17 @@
-// backend/routes/product.route.js
-
-const express = require('express');
-const router = express.Router();
-const productController = require('../controllers/product.controller');
-const authMiddleware = require('../middlewares/auth.middleware');
+const express = require('express')
+const router = express.Router()
+const controller = require('../controllers/product.controller')
 
 /**
  * @swagger
  * /products:
  *   get:
- *     tags:
- *       - Product
- *     summary: Récupère la liste de tous les produits
- *     security:
- *       - BearerAuth: []
- *     description: Accès public, mais l'authentification est requise pour la démonstration.
+ *     summary: Get all products
  *     responses:
  *       200:
- *         description: Une liste de produits.
- *       401:
- *         description: Authentification requise.
- */
-router.get('/', authMiddleware.checkAuth, productController.getProducts);
-
-/**
- * @swagger
- * /products:
+ *         description: List of products
  *   post:
- *     tags:
- *       - Product
- *     summary: Crée un nouveau produit
- *     security:
- *       - BearerAuth: []
- *     description: Crée un produit avec les données fournies.
+ *     summary: Create a product
  *     requestBody:
  *       required: true
  *       content:
@@ -46,10 +25,9 @@ router.get('/', authMiddleware.checkAuth, productController.getProducts);
  *                 type: number
  *     responses:
  *       201:
- *         description: Le produit a été créé avec succès.
- *       401:
- *         description: Authentification requise.
+ *         description: Product created
  */
-router.post('/', authMiddleware.checkAuth, productController.createProduct);
+router.get('/', controller.getProducts)
+router.post('/', controller.createProduct)
 
-module.exports = router;
+module.exports = router

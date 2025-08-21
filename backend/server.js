@@ -1,17 +1,13 @@
-const mongoose = require("mongoose");
-const app = require("./app");
-const swaggerDocs = require("./swagger");
+const express = require('express')
+const bodyParser = require('body-parser')
+const productRoutes = require('./routes/product.route')
 
-const PORT = 5001;
-const MONGO_URL = "mongodb://mongo:27017/demo";
+const app = express()
+app.use(bodyParser.json())
 
-mongoose
-  .connect(MONGO_URL)
-  .then(() => console.log("✅ MongoDB connecté"))
-  .catch((err) => console.log(err));
+app.use('/products', productRoutes)
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🚀 Backend running on port ${PORT}`);
-  swaggerDocs(app, PORT);
-});
+require('./swagger')(app)
 
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`🚀 Backend running at http://localhost:${PORT}`))

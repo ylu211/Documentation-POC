@@ -1,13 +1,26 @@
-// backend/services/product.service.js
+const Product = require('../models/product.model')
 
-exports.getAllProducts = () => {
-  // Logique pour interroger la base de données
-  console.log('Service Layer: Fetching all products from the database.');
-  return 'Data from the database';
-};
+class ProductService {
+  constructor() {
+    this.products = [
+      new Product(1, "Laptop", 1200),
+      new Product(2, "Phone", 800)
+    ]
+  }
 
-exports.createProduct = (productData) => {
-  // Logique pour valider et insérer des données dans la base de données
-  console.log('Service Layer: Creating a new product in the database.');
-  return `New product created: ${JSON.stringify(productData)}`;
-};
+  findAll() {
+    return this.products
+  }
+
+  create(productDto) {
+    const newProduct = new Product(
+      this.products.length + 1,
+      productDto.name,
+      productDto.price
+    )
+    this.products.push(newProduct)
+    return newProduct
+  }
+}
+
+module.exports = new ProductService()

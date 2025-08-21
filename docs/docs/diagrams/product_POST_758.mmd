@@ -8,21 +8,21 @@ classDef LAYER fill:#b3e5fc,stroke:#333,stroke-width:1px,color:#333;
 
 
 subgraph Endpoints
-  GET_user_272(("GET user/:id"))
+  POST_product_758(("POST product/"))
 end
 
 subgraph Logic
-  Controller_userController.getUserById_0[/userController.getUserById/]
+  Controller_controller.createProduct_0[/controller.createProduct/]
 end
 
 subgraph Data Layer
-  database_user[/Database/]
+  database_product[/Database/]
 end
 
-  Client --> GET_user_272
-  GET_user_272 --> Controller_userController.getUserById_0
-  Controller_userController.getUserById_0 --> database_user
+  Client --> POST_product_758
+  POST_product_758 --> Controller_controller.createProduct_0
+  Controller_controller.createProduct_0 --> database_product
 
-  class GET_user_272 GET;
-  class Controller_userController.getUserById_0 LAYER;
+  class POST_product_758 POST;
+  class Controller_controller.createProduct_0 LAYER;
 

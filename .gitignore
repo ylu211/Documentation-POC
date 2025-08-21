@@ -1,23 +1,14 @@
-# Node modules
-back/node_modules/
-demo/node_modules/
-node_modules/
+# Dependencies
+backend/node_modules/
+docs/node_modules
 
-# Logs
-*.log
+# Production
+/build
+
+# Generated files
+.docusaurus
+.cache-loader
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Env files
-*.env
-
-# Docker
-**/Dockerfile.*
-**/docker-compose.override.yml
-**/docker-compose.override.yaml
-
-# OS / IDE
-.DS_Store
-.vscode/
-.idea/
