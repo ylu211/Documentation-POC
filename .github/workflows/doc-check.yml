@@ -1,0 +1,34 @@
+# .github/workflows/doc-check.yml
+
+name: Documentation Check & AI Analysis
+
+on:
+  pull_request:
+    paths:
+      - 'backend/**'
+
+jobs:
+  analyze-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install backend dependencies
+        run: npm install
+        working-directory: ./backend
+
+      - name: Generate Swagger
+        run: node scripts/generateSwagger.js
+        working-directory: ./backend
+        
+      - name: Upload Swagger artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: swagger-file
+          path: docs/static/swagger.json

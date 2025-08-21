@@ -1,9 +1,12 @@
 version: "3.9"
+
 services:
   backend:
-    build: ./back
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
-      - "5001:5000"
+      - "5001:5001"
     environment:
       MONGO_URL: "mongodb://mongo:27017/pocdb"
     depends_on:
@@ -16,21 +19,12 @@ services:
     volumes:
       - mongo-data:/data/db
 
-  frontend:
-    build: ./front
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
-
   docs:
-    build: ./docs
+    build:
+      context: ./docs
+      dockerfile: Dockerfile
     ports:
-      - "8000:8000"
-    volumes:
-      - ./docs:/docs
-    working_dir: /docs
-    command: ["mkdocs", "serve", "-a", "0.0.0.0:8000"]
+      - "3001:3001"
 
 volumes:
   mongo-data:
