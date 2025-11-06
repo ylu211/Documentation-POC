@@ -1,61 +1,86 @@
 {
-  "swaggerDefinition": {
-    "info": {
-      "title": "Votre API",
-      "description": "Documentation de votre API pour le POC.",
-      "version": "1.0.0"
-    },
-    "host": "localhost:5001",
-    "basePath": "/",
-    "schemes": [
-      "http"
-    ]
-  },
-  "apis": [
-    "./routes/**/*.route.js"
-  ],
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "paths": {
-    "/products": {
+    "/api/products": {
       "get": {
-        "summary": "Get all products",
+        "operationId": "ProductController_findAll",
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "List of products"
+            "description": ""
           }
-        }
+        },
+        "tags": [
+          "products"
+        ]
       },
       "post": {
-        "summary": "Create a product",
+        "operationId": "ProductController_create",
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "price": {
-                    "type": "number"
-                  }
-                }
+                "$ref": "#/components/schemas/CreateProductDto"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Product created"
+            "description": ""
           }
-        }
+        },
+        "tags": [
+          "products"
+        ]
       }
     }
   },
-  "definitions": {},
-  "responses": {},
-  "parameters": {},
-  "securityDefinitions": {},
-  "tags": []
+  "info": {
+    "title": "Product API",
+    "description": "API de gestion des produits",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "CreateProductDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "iPhone 15",
+            "description": "Nom du produit"
+          },
+          "price": {
+            "type": "number",
+            "example": 999,
+            "description": "Prix en euros",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string",
+            "example": "Smartphone Apple dernière génération",
+            "description": "Description du produit"
+          }
+        },
+        "required": [
+          "name",
+          "price",
+          "description"
+        ]
+      }
+    }
+  }
 }
